@@ -5,6 +5,7 @@ import com.example.TendaProjectJavaTT.dominio.servicios.ProductService;
 import com.example.TendaProjectJavaTT.dominio.servicios.PurchaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,4 +23,8 @@ public class PurchaseController {
         return purchaseService.getAll();
     }
 
+    @GetMapping("/purchase/{mp}")
+    public List<Purchase> getById(@PathVariable("mp") String paymentMethod){
+        return purchaseService.findByPaymentsMethod(paymentMethod);
+    }
 }
